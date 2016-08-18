@@ -41,7 +41,7 @@ module.exports = (robot) => {
 
     lr = new LR(3, 0.2)
 
-    lr.on('addPlayer', user => res.send(res.random(phrases.join)))
+    lr.on('addPlayer', user => res.send(user.name, res.random(phrases.join)))
     lr.on('remPlayer', user => res.send(res.random(phrases.leave)))
     //
     lr.on('start', timeLeft => res.send(res.random(phrases.init)))
@@ -51,24 +51,24 @@ module.exports = (robot) => {
     })
 
     lr.on('tick', timeLeft => res.send(`Noch ${timeLeft.inSeconds}`))
-    //
-    // lr.onDraw = groups => {
-    //   res.send('Groups generated')
-    //   groups.forEach(group => {
-    //     let message = `Group: `
-    //     for(user of group){
-    //         message += user.name
-    //         message += ' and '
-    //     }
-    //     res.send(message)
-    //   })
-    // }
 
-    lr.addPlayer('Fabien')
-    lr.addPlayer('Rolf')
-    lr.addPlayer('Christina')
+    lr.onDraw = groups => {
+      res.send('Groups generated')
+      groups.forEach(group => {
+        let message = `Group: `
+        for(user of group){
+            message += user.name
+            message += ' and '
+        }
+        res.send(message)
+      })
+    }
 
     lr.startGame()
+
+    setTimeout(() => lr.addPlayer('Fabien'), 1000)
+    setTimeout(() => lr.addPlayer('Rolf'), 2000)
+    setTimeout(() => lr.addPlayer('Christina'), 3000)
 
   })
 
