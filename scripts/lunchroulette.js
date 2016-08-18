@@ -41,9 +41,13 @@ module.exports = (robot) => {
 
     lr = new LR(3, 0.2)
 
-    lr.on('addPlayer', user => res.send(user.name, res.random(phrases.join)))
-    lr.on('remPlayer', user => res.send(res.random(phrases.leave)))
-    //
+    lr.on('addPlayer', user => {
+      console.log(user)
+      res.send(res.random(phrases.join))
+    })
+
+    lr.on('remPlayer', user => res.send(user.name  + ' ' +  res.random(phrases.leave)))
+
     lr.on('start', timeLeft => res.send(res.random(phrases.init)))
     lr.on('end', timeLeft => {
       res.send(res.random(phrases.roulette))
@@ -67,8 +71,8 @@ module.exports = (robot) => {
     lr.startGame()
 
     setTimeout(() => lr.addPlayer('Fabien'), 1000)
-    setTimeout(() => lr.addPlayer('Rolf'), 2000)
-    setTimeout(() => lr.addPlayer('Christina'), 3000)
+    setTimeout(() => lr.addPlayer('Rolf'), 3000)
+    setTimeout(() => lr.addPlayer('Christina'), 5000)
 
   })
 
