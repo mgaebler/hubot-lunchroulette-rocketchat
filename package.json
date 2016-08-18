@@ -1,23 +1,23 @@
 {
-  "name": "hubot-lunchroulette",
-  "version": "0.0.1",
-  "description": "A bot who helps users join lunch roulettes",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/mgaebler/hubot-lunchroulette.git"
-  },
-  "scripts": {
-    "test": "bin/mocha"
-  },
-  "keywords": [
-    "lunch",
-    "bot",
-    "community"
-  ],
-  "author": "marian.gaebler@gmail.com",
-  "license": "MIT",
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^2.5.3"
+  "name": "rocketbot",
+  "version": "0.0.0",
+  "private": true,
+  "author": "Marian Gaebler <marian.gaebler@gmail.com>",
+  "description": "A simple helpful robot for your Company",
+  "dependencies": {
+    "hubot": "^2.19.0",
+    "hubot-diagnostics": "0.0.1",
+    "hubot-google-images": "^0.2.6",
+    "hubot-google-translate": "^0.2.0",
+    "hubot-help": "^0.2.0",
+    "hubot-heroku-keepalive": "^1.0.2",
+    "hubot-maps": "0.0.2",
+    "hubot-pugme": "^0.1.0",
+    "hubot-redis-brain": "0.0.3",
+    "hubot-rocketchat": "git://github.com/RocketChat/hubot-rocketchat.git#v0.1.4",
+    "drawer": "git@github.com:mgaebler/drawer.git#master",
+    "hubot-rules": "^0.1.1",
+    "hubot-scripts": "2.17.2",
+    "hubot-shipit": "^0.2.0"
   }
 }
