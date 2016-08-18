@@ -12,28 +12,28 @@ module.exports = (robot) => {
   })
 
   // init
-  robot.respond(/game/i, res => {
+  robot.hear(/game/i, res => {
 
   })
 
   // join
-  robot.respond(/game/i, res => {
+  robot.hear(/game/i, res => {
 
   })
 
   // leave
-  robot.respond(/game/i, res => {
+  robot.hear(/game/i, res => {
 
   })
 
   // status
-  robot.respond(/game/i, res => {
+  robot.hear(/game/i, res => {
 
   })
 
   // reminder
   robot.respond(/game/i, res => {
-    
+
   })
 
   // roulette
@@ -41,14 +41,14 @@ module.exports = (robot) => {
     res.send(res.random(phrases.help))
     lr = new LR(3, 0.2)
 
-    lr.on('addPlayer', user => res.send(`${user.name} ist dabei.`))
-    lr.on('remPlayer', user => res.send(`${user.name} wurde entfernt.`))
+    lr.on('addPlayer', user => res.send(res.random(phrases.join))
+    lr.on('remPlayer', user => res.send(res.random(phrases.leave))
     //
-    // lr.on('start', timeLeft => res.send('Spiel wurde gestartet'))
-    // lr.on('end', timeLeft => {
-    //   res.send('Spiel beendet')
-    //   delete(lr)
-    // })
+    lr.on('start', timeLeft => res.send(res.random(phrases.init)))
+    lr.on('end', timeLeft => {
+      res.send(res.random(phrases.roulette))
+      delete(lr)
+    })
     //
     // lr.onTick(timeLeft => res.send(`Noch ${timeLeft.inSeconds}`))
     //
