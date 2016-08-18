@@ -1,4 +1,13 @@
 module.exports = {
+  enter_channel: [
+    'Moin Moin',
+    'Hallo junger Padawan',
+    'Ein neue Mitstreiter... oder soll ich Mitesser sagen?'
+  ],
+  leave_channel: [
+    'Shit, wir haben dich verloren',
+    'War das Absicht oder zwingt dich die Regierung hier auszusteigen?'
+  ],
   help: [
     'Viel zu lernen du noch hast junger Padawan!',
     'Ich spreche nur meine Sprache und selbst damit hab ich schon Probleme!'
@@ -11,7 +20,7 @@ module.exports = {
   join: [
     'Herzlichen Glückwunsch... du bist im Recall' ,
     'Vergiss niemals: Aus großer Macht, folgt große Verantwortung! Du bist dabei :-)' ,
-    'Guten Morgen, du bist dabei... Oh, und falls wir uns nicht mehr sehen, guten Tag, guten Abend und gute Nacht!' ,
+    'Guten Morgen, und guten Appetit... Oh, und falls wir uns nicht mehr sehen, guten Tag, guten Abend und gute Nacht!' ,
     'Warum denn so ernst? Na gut das kann ich auch: Hiermit teilen ich ihnen offiziell mit, das sie am Lunch Roulette teilnehmen.',
     'Lord Vader... äääh #{res.user.name}, euer Besuch ehrt uns! Welch unerwartetes Vergnügen.'
   ],
