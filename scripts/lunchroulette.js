@@ -7,14 +7,14 @@ const phrases = require('../phrases')
 module.exports = (robot) => {
 
   // new user joins Lunch Roulette Channel
-  robot.enter (res) => {
+  robot.enter (res => {
     res.send (res.random (phrases.enter_channel))
-  }
+  })
 
   // user leaves Lunch Roulette Channel
-  robot.leave (res) => {
+  robot.leave (res => {
     res.send (res.random (phrases.leave_channel))
-  }
+  })
 
   // help
   robot.hear(/help/i, res => {
