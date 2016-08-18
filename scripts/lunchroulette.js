@@ -6,38 +6,48 @@ const phrases = require('../phrases')
 
 module.exports = (robot) => {
 
+  // new user joins Lunch Roulette Channel
+  robot.enter (res) => {
+    res.send res.random enter_channel
+  }
+
+  // user leaves Lunch Roulette Channel
+  robot.leave (res) => {
+    res.send res.random leave_channel
+  }
+
   // help
   robot.hear(/help/i, res => {
-
+    res.send res.random help
   })
 
   // init
-  robot.hear(/game/i, res => {
-
+  robot.hear(/init/i, res => {
+    res.send res.random init
   })
 
   // join
-  robot.hear(/game/i, res => {
-
+  robot.hear(/bin dabei|nehme teil|:thumbsup:|I'm in/i, res => {
+    res.send res.random join
   })
 
   // leave
-  robot.hear(/game/i, res => {
-
+  robot.respond(/raus|exit|nicht mehr|keine Zeit|:thumbsdown:/i, res => {
+    res.send res.random leave
   })
 
   // status
-  robot.hear(/game/i, res => {
-
+  robot.respond(/status|wie siehts aus/i, res => {
+    res.send res.random status
   })
 
   // reminder
-  robot.respond(/game/i, res => {
-
+  robot.respond(/reminder/i, res => {
+    res.send res.random reminder
   })
 
   // roulette
-  robot.respond(/game/i, res => {
+  robot.respond(/roulette/i, res => {
 
     lr = new LR(3, 0.2)
 
