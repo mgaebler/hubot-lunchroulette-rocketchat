@@ -38,19 +38,19 @@ module.exports = (robot) => {
 
   // roulette
   robot.respond(/game/i, res => {
-    res.send(res.random(phrases.help))
+
     lr = new LR(3, 0.2)
 
-    lr.on('addPlayer', user => res.send(res.random(phrases.join))
-    lr.on('remPlayer', user => res.send(res.random(phrases.leave))
+    lr.on('addPlayer', user => res.send(res.random(phrases.join)))
+    lr.on('remPlayer', user => res.send(res.random(phrases.leave)))
     //
     lr.on('start', timeLeft => res.send(res.random(phrases.init)))
     lr.on('end', timeLeft => {
       res.send(res.random(phrases.roulette))
       delete(lr)
     })
-    //
-    // lr.onTick(timeLeft => res.send(`Noch ${timeLeft.inSeconds}`))
+
+    lr.on('tick', timeLeft => res.send(`Noch ${timeLeft.inSeconds}`))
     //
     // lr.onDraw = groups => {
     //   res.send('Groups generated')
@@ -64,11 +64,11 @@ module.exports = (robot) => {
     //   })
     // }
 
-    // lr.addPlayer('Fabien')
-    // lr.addPlayer('Rolf')
-    // lr.addPlayer('Christina')
+    lr.addPlayer('Fabien')
+    lr.addPlayer('Rolf')
+    lr.addPlayer('Christina')
 
-    // lr.startGame()
+    lr.startGame()
 
   })
 
