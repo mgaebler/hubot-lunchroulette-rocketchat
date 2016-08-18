@@ -21,21 +21,6 @@ module.exports = (robot) => {
     res.send (res.random (phrases.help))
   })
 
-  // init
-  robot.hear(/init/i, res => {
-    res.send (res.random (phrases.init))
-  })
-
-  // join
-  robot.hear(/bin dabei|nehme teil|:thumbsup:|I'm in/i, res => {
-    res.send (res.random (phrases.join))
-  })
-
-  // leave
-  robot.respond(/raus|exit|nicht mehr|keine Zeit|:thumbsdown:/i, res => {
-    res.send (res.random (phrases.leave))
-  })
-
   // status
   robot.respond(/status|wie siehts aus/i, res => {
     res.send (res.random (phrases.status))
@@ -49,14 +34,13 @@ module.exports = (robot) => {
   // roulette
   robot.respond(/roulette/i, res => {
 
-    lr = new LR(3, 5)
+    lr = new LR(3, 0.5)
 
     lr.on('addPlayer', user => {
-      console.log(user)
-      res.send(res.random(phrases.join))
+      res.send(res.random(user, phrases.join))
     })
 
-    lr.on('remPlayer', user => res.send(user.name  + ' ' +  res.random(phrases.leave)))
+    lr.on('remPlayer', user => res.send(res.random(phrases.leave)))
 
     lr.on('start', timeLeft => res.send(res.random(phrases.init)))
     lr.on('end', timeLeft => {
@@ -64,7 +48,13 @@ module.exports = (robot) => {
       delete(lr)
     })
 
-    lr.on('tick', timeLeft => res.send(`Noch ${timeLeft.inSeconds}`))
+    lr.on('tick', timeLeft => {
+      if(!(timeLeft.inSeconds % 10)){
+        res.send(`Noch ${timeLeft.inSeconds} Sekunden.`)
+      } else if (timeLeft.inSeconds < 10) {
+        res.send(timeLeft.inSeconds)
+      }
+    })
 
     lr.onDraw = groups => {
       res.send('Groups generated')
@@ -78,6 +68,7 @@ module.exports = (robot) => {
       })
     }
 
+    // starts the game
     lr.startGame()
 
   })
