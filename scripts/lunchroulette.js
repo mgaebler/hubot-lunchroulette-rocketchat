@@ -8,42 +8,42 @@ module.exports = (robot) => {
 
   // new user joins Lunch Roulette Channel
   robot.enter (res) => {
-    res.send res.random enter_channel
+    res.send (res.random (phrases.enter_channel))
   }
 
   // user leaves Lunch Roulette Channel
   robot.leave (res) => {
-    res.send res.random leave_channel
+    res.send (res.random (phrases.leave_channel))
   }
 
   // help
   robot.hear(/help/i, res => {
-    res.send res.random help
+    res.send (res.random (phrases.help))
   })
 
   // init
   robot.hear(/init/i, res => {
-    res.send res.random init
+    res.send (res.random (phrases.init))
   })
 
   // join
   robot.hear(/bin dabei|nehme teil|:thumbsup:|I'm in/i, res => {
-    res.send res.random join
+    res.send (res.random (phrases.join))
   })
 
   // leave
   robot.respond(/raus|exit|nicht mehr|keine Zeit|:thumbsdown:/i, res => {
-    res.send res.random leave
+    res.send (res.random (phrases.leave))
   })
 
   // status
   robot.respond(/status|wie siehts aus/i, res => {
-    res.send res.random status
+    res.send (res.random (phrases.status))
   })
 
   // reminder
   robot.respond(/reminder/i, res => {
-    res.send res.random reminder
+    res.send (res.random (phrases.reminder))
   })
 
   // roulette
