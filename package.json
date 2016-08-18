@@ -1,0 +1,23 @@
+{
+  "name": "hubot-lunchroulette",
+  "version": "0.0.1",
+  "description": "A bot who helps users join lunch roulettes",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/mgaebler/hubot-lunchroulette.git"
+  },
+  "scripts": {
+    "test": "bin/mocha"
+  },
+  "keywords": [
+    "lunch",
+    "bot",
+    "community"
+  ],
+  "author": "marian.gaebler@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
