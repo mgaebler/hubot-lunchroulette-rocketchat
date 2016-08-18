@@ -1,18 +1,36 @@
 const LR = require('drawer')
+const phrases = require('../phrases')
 
-const gameStartRandomMessages = [
-  'They see me rollin'
-]
+
 
 
 module.exports = (robot) => {
 
-  robot.respond(/game/i, res => {
+  // help
+  robot.respond(/game/i, res => {})
 
-    // lr = new LR(3, 0.2)
-    //
-    // lr.on('addPlayer', user => res.send(`${user.name} ist dabei.`))
-    // lr.on('remPlayer', user => res.send(`${user.name} wurde entfernt.`))
+  // init
+  robot.respond(/game/i, res => {})
+
+  // join
+  robot.respond(/game/i, res => {})
+
+  // leave
+  robot.respond(/game/i, res => {})
+
+  // status
+  robot.respond(/game/i, res => {})
+
+  // reminder
+  robot.respond(/game/i, res => {})
+
+  // roulette
+  robot.respond(/game/i, res => {
+    res.send(res.random(phrases.help))
+    lr = new LR(3, 0.2)
+
+    lr.on('addPlayer', user => res.send(`${user.name} ist dabei.`))
+    lr.on('remPlayer', user => res.send(`${user.name} wurde entfernt.`))
     //
     // lr.on('start', timeLeft => res.send('Spiel wurde gestartet'))
     // lr.on('end', timeLeft => {
