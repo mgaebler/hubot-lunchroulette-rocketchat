@@ -49,7 +49,7 @@ module.exports = (robot) => {
   // roulette
   robot.respond(/roulette/i, res => {
 
-    lr = new LR(3, 0.2)
+    lr = new LR(3, 5)
 
     lr.on('addPlayer', user => {
       console.log(user)
@@ -80,10 +80,18 @@ module.exports = (robot) => {
 
     lr.startGame()
 
-    setTimeout(() => lr.addPlayer('Fabien'), 1000)
-    setTimeout(() => lr.addPlayer('Rolf'), 3000)
-    setTimeout(() => lr.addPlayer('Christina'), 5000)
+  })
 
+  robot.respond(/fake user/i, res => {
+
+    setTimeout(() => lr.addPlayer('Fabien'), 1000)
+    setTimeout(() => lr.addPlayer('Rolf'), 10000)
+    setTimeout(() => lr.addPlayer('Christina'), 20000)
+
+  })
+
+  robot.respond(/fake leave/i, res => {
+    lr.remUser('Rolf')
   })
 
 }
