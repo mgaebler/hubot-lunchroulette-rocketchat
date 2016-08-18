@@ -7,22 +7,34 @@ const phrases = require('../phrases')
 module.exports = (robot) => {
 
   // help
-  robot.respond(/game/i, res => {})
+  robot.hear(/help/i, res => {
+
+  })
 
   // init
-  robot.respond(/game/i, res => {})
+  robot.respond(/game/i, res => {
+
+  })
 
   // join
-  robot.respond(/game/i, res => {})
+  robot.respond(/game/i, res => {
+
+  })
 
   // leave
-  robot.respond(/game/i, res => {})
+  robot.respond(/game/i, res => {
+
+  })
 
   // status
-  robot.respond(/game/i, res => {})
+  robot.respond(/game/i, res => {
+
+  })
 
   // reminder
-  robot.respond(/game/i, res => {})
+  robot.respond(/game/i, res => {
+    
+  })
 
   // roulette
   robot.respond(/game/i, res => {
