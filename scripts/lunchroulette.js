@@ -8,9 +8,7 @@ const gameStartRandomMessages = [
 module.exports = (robot) => {
 
   robot.respond(/game/i, res => {
-    res.send("Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS")
-    // console.log(res)
-    // res.send(res.random(gameStartRandomMessages))
+
     // lr = new LR(3, 0.2)
     //
     // lr.on('addPlayer', user => res.send(`${user.name} ist dabei.`))
