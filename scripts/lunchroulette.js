@@ -2,7 +2,7 @@ const LR = require('drawer')
 const phrases = require('../phrases')
 
 
-
+var lr;
 
 module.exports = (robot) => {
 
@@ -26,21 +26,16 @@ module.exports = (robot) => {
     res.send (res.random (phrases.status))
   })
 
-  // reminder
-  robot.respond(/reminder/i, res => {
-    res.send (res.random (phrases.reminder))
-  })
-
   // roulette
   robot.respond(/roulette/i, res => {
 
-    lr = new LR(3, 0.5)
+    lr = new LR(3, 5)
 
     lr.on('addPlayer', user => {
-      res.send(res.random(user, phrases.join))
+      res.send(user, res.random(phrases.join))
     })
 
-    lr.on('remPlayer', user => res.send(res.random(phrases.leave)))
+    lr.on('remPlayer', user => res.send(user, res.random(phrases.leave)))
 
     lr.on('start', timeLeft => res.send(res.random(phrases.init)))
     lr.on('end', timeLeft => {
@@ -50,27 +45,27 @@ module.exports = (robot) => {
 
     lr.on('tick', timeLeft => {
       if(!(timeLeft.inSeconds % 10)){
-        res.send(`Noch ${timeLeft.inSeconds} Sekunden.`)
+        // res.send(`Noch ${timeLeft.inSeconds} Sekunden.`)
       } else if (timeLeft.inSeconds < 10) {
         res.send(timeLeft.inSeconds)
       }
     })
 
-    lr.onDraw = groups => {
+    lr.on('draw', groups => {
       res.send('Groups generated')
       groups.forEach(group => {
         let message = `Group: `
         for(user of group){
-            message += user.name
+            message += user
             message += ' and '
         }
         res.send(message)
       })
-    }
+    })
 
     // starts the game
     lr.startGame()
-
+    setTimeout(() => lr.addPlayer('Paul'), 10000)
   })
 
   robot.respond(/fake user/i, res => {
@@ -81,8 +76,17 @@ module.exports = (robot) => {
 
   })
 
-  robot.respond(/fake leave/i, res => {
-    lr.remUser('Rolf')
+  robot.respond(/fake init/i, res => {
+    lr.startGame()
   })
+
+  robot.respond(/fake reminder/i, res => {
+    res.send (res.random (phrases.reminder))
+  })
+
+  robot.respond(/fake roulette/i, res => {
+    lr.endGame()
+  })
+
 
 }
