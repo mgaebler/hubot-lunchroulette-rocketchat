@@ -2,7 +2,7 @@ const LR = require('drawer')
 const phrases = require('../phrases')
 
 
-var lr;
+var lr; // make it global available
 
 module.exports = (robot) => {
 
@@ -76,9 +76,6 @@ module.exports = (robot) => {
 
   })
 
-  robot.respond(/fake init/i, res => {
-    lr.startGame()
-  })
 
   robot.respond(/fake reminder/i, res => {
     res.send (res.random (phrases.reminder))
