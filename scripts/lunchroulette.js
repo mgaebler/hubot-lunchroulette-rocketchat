@@ -1,3 +1,20 @@
+/**
+ * Description:
+ *   Lunchroulette helps you find lunch mates.
+ *
+ * Dependencies:
+ * None
+ *
+ * Configuration:
+ *   None
+ *
+ * Commands:
+ *   hubot roulette - Starts a new game.
+ *   hubot join - Join to current game.
+ *   hubot leave - Leaves the current game if you're joined in before.
+ */
+
+
 const LR = require('drawer')
 const phrases = require('../phrases')
 
@@ -38,6 +55,7 @@ module.exports = (robot) => {
     lr.on('remPlayer', user => res.send(user, res.random(phrases.leave)))
 
     lr.on('start', timeLeft => res.send(res.random(phrases.init)))
+
     lr.on('end', timeLeft => {
       res.send(res.random(phrases.roulette))
       delete(lr)
@@ -66,6 +84,16 @@ module.exports = (robot) => {
     // starts the game
     lr.startGame()
     setTimeout(() => lr.addPlayer('Paul'), 10000)
+  })
+
+  // player joins
+  robot.respond(/join/i, res => {
+    lr.addPlayer('Fabien')
+  })
+
+  // player leaves
+  robot.respond(/leave/i, res => {
+    lr.remPlayer('Fabien')
   })
 
   robot.respond(/fake user/i, res => {
