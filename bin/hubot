@@ -2,12 +2,13 @@
 
 set -e
 
-export ROCKETCHAT_URL=http://192.168.99.100
+export ROCKETCHAT_URL=http://localhost:3000
 export ROCKETCHAT_ROOM=''
 export LISTEN_ON_ALL_PUBLIC=true
 export ROCKETCHAT_USER=bot
 export ROCKETCHAT_PASSWORD=bot
 export ROCKETCHAT_AUTH=password
+# export REDIS_URL=redis://localhost:32768
 export RESPOND_TO_DM=true
 export RESPOND_TO_EDITED=true
 

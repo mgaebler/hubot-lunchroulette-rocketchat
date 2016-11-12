@@ -1,0 +1,12 @@
+---
+version: '2'
+services:
+  db:
+    image: mongo:3.0
+  chat:
+    image: "rocket.chat"
+    build: .
+    ports:
+     - "3000:3000"
+    depends_on:
+     - db
