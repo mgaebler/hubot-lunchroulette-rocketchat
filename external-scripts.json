@@ -1,4 +1,5 @@
 [
+  "hubot-lunchroulette",
   "hubot-diagnostics",
   "hubot-help",
   "hubot-heroku-keepalive",
